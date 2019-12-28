@@ -144,7 +144,7 @@ describe 'os-hardening::sysctl' do
         node.normal['os-hardening']['network']['ipv6']['enable'] = ipv6_enable
         node.normal['os-hardening']['network']['arp']['restricted'] =
           arp_restricted
-        node.normal['os-hardening']['security']['kernel']['enable_module_loading'] = # rubocop:disable Metrics/LineLength
+        node.normal['os-hardening']['security']['kernel']['enable_module_loading'] =
           enable_module_loading
         node.normal['os-hardening']['security']['kernel']['enable_sysrq'] =
           enable_sysrq
@@ -177,7 +177,7 @@ describe 'os-hardening::sysctl' do
 
     describe 'IPv6 forwarding' do
       RSpec.shared_examples 'IPv6 forwarding in sysctl attributes' do |state|
-        it "should #{state == 1 ? 'enable' : 'disable'} IPv6 forwarding in sysctl attributes" do # rubocop:disable Metrics/LineLength
+        it "should #{state == 1 ? 'enable' : 'disable'} IPv6 forwarding in sysctl attributes" do
           expect(chef_run).to apply_sysctl('net.ipv6.conf.all.forwarding').with(
             value: state.to_s
           )
@@ -239,7 +239,7 @@ describe 'os-hardening::sysctl' do
     end
 
     describe 'ARP restrictions' do
-      RSpec.shared_examples 'ARP restrictions in sysctl attributes' do |arp_ignore, arp_announce| # rubocop:disable Metrics/LineLength
+      RSpec.shared_examples 'ARP restrictions in sysctl attributes' do |arp_ignore, arp_announce|
         describe 'arp_ignore' do
           it "should be set to #{arp_ignore}" do
             expect(chef_run).to apply_sysctl('net.ipv4.conf.all.arp_ignore').with(
@@ -372,7 +372,7 @@ describe 'os-hardening::sysctl' do
 
     describe 'when unused filesystems are disabled with default values' do
       it 'should render the proper modprobe file' do
-        %w[cramfs freevxfs jffs2 hfs hfsplus squashfs udf vfat].each do |fs|
+        %w(cramfs freevxfs jffs2 hfs hfsplus squashfs udf vfat).each do |fs|
           expect(chef_run).to render_file('/etc/modprobe.d/dev-sec.conf').
             with_content("install #{fs} /bin/true")
         end
@@ -380,10 +380,10 @@ describe 'os-hardening::sysctl' do
     end
 
     describe 'when only some filesystems are disabled' do
-      let(:disable_filesystems) { %w[vfat udf] }
+      let(:disable_filesystems) { %w(vfat udf) }
 
       it 'should render the proper modprobe file' do
-        %w[udf vfat].each do |fs|
+        %w(udf vfat).each do |fs|
           expect(chef_run).to render_file('/etc/modprobe.d/dev-sec.conf').
             with_content("install #{fs} /bin/true")
         end
@@ -394,7 +394,7 @@ describe 'os-hardening::sysctl' do
     end
 
     describe 'when unused filesystems are not disabled' do
-      let(:disable_filesystems) { %w[] }
+      let(:disable_filesystems) { %w() }
 
       it 'should delete the modprobe file' do
         expect(chef_run).to delete_file('/etc/modprobe.d/dev-sec.conf')

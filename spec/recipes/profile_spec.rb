@@ -20,7 +20,7 @@ describe 'os-hardening::profile' do
   let(:enable_core_dump) { nil }
   let(:chef_run) do
     ChefSpec::ServerRunner.new do |node|
-      node.override['os-hardening']['security']['kernel']['enable_core_dump'] = enable_core_dump if enable_core_dump # rubocop:disable Metrics/LineLength
+      node.override['os-hardening']['security']['kernel']['enable_core_dump'] = enable_core_dump if enable_core_dump
     end.converge(described_recipe)
   end
 

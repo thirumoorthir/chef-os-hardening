@@ -30,7 +30,7 @@ describe 'os-hardening::securetty' do
       group:     'root',
       mode:      '0400',
       variables: {
-        ttys: "console\ntty1\ntty2\ntty3\ntty4\ntty5\ntty6"
+        ttys: "console\ntty1\ntty2\ntty3\ntty4\ntty5\ntty6",
       }
     )
   end

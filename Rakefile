@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Style/SymbolArray
-
 require 'foodcritic'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'

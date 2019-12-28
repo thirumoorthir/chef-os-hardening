@@ -142,7 +142,7 @@ begin
                sub(/^.*GenuineIntel.*$/, 'intel').
                sub(/^.*AuthenticAMD.*$/, 'amd')
   node.default['os-hardening']['security']['cpu_vendor'] = cpu_vendor
-rescue # rubocop:disable Style/RescueStandardError
+rescue
   log 'WARNING: Could not properly determine the cpu vendor. Fallback to intel cpu.' do
     level :warn
   end

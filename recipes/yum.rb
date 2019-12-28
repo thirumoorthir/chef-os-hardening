@@ -43,7 +43,7 @@ end
 if node['os-hardening']['security']['packages']['clean']
 
   # remove unused repos
-  %w[CentOS-Debuginfo CentOS-Media CentOS-Vault].each do |repo|
+  %w(CentOS-Debuginfo CentOS-Media CentOS-Vault).each do |repo|
     yum_repository repo do
       action :remove
     end

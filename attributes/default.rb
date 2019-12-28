@@ -19,11 +19,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# rubocop:disable Metrics/BlockLength
-
 default['os-hardening'].tap do |os_hardening|
   # components of this cookbook
-  %w[packages limits login_defs minimize_access pam profile securetty].each do |cp|
+  %w(packages limits login_defs minimize_access pam profile securetty).each do |cp|
     os_hardening['components'][cp] = true
   end
 
@@ -76,7 +74,7 @@ default['os-hardening'].tap do |os_hardening|
     auth['timeout'] = 60
     auth['allow_homeless'] = false
     auth['login_defs']['template_cookbook'] = 'os-hardening'
-    auth['root_ttys'] = %w[console tty1 tty2 tty3 tty4 tty5 tty6]
+    auth['root_ttys'] = %w(console tty1 tty2 tty3 tty4 tty5 tty6)
     auth['uid_min'] = 1000
     auth['uid_max'] = 60000
     auth['gid_min'] = 1000
@@ -123,7 +121,7 @@ default['os-hardening'].tap do |os_hardening|
     # may contain: change_user
     security['users']['allow'] = []
     security['kernel']['enable_module_loading'] = true
-    security['kernel']['disable_filesystems'] = %w[cramfs freevxfs jffs2 hfs hfsplus squashfs udf vfat]
+    security['kernel']['disable_filesystems'] = %w(cramfs freevxfs jffs2 hfs hfsplus squashfs udf vfat)
     security['kernel']['enable_sysrq'] = false
     security['kernel']['enable_core_dump'] = false
     security['suid_sgid']['enforce'] = true
@@ -149,7 +147,7 @@ default['os-hardening'].tap do |os_hardening|
       'inetd',
       'ypserv',
       'telnet-server',
-      'rsh-server'
+      'rsh-server',
     ]
 
     # SELinux enforcing (enforcing, permissive, unmanaged)
